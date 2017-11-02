@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>POST请求</title>
+	<style>
+	#box {
+	  display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #555;
+    opacity: .5;
+    text-align: center;
+    line-height: 300px;
+	}
+	#box::after {
+		content: '正在加载...';
+		color: #ccc;
+	}
+
+
+	</style>
+</head>
+<body>
+  <div id="box"></div>
+  <table>
+  	<tr>
+  		<td>用户名</td>
+  		<td><input type="text" id="username"></td>
+  	</tr>
+  	<tr>
+  		<td>密码</td>
+  		<td><input type="password" id="password"></td>
+  	</tr>
+  	<tr>
+  		<td></td>
+  		<td><button id="btn">登录</button></td>
+  	</tr>
+  </table>
+
+	
+</body>
+<script>
+  // 获取元素
+  var btn = document.getElementById('btn');
+  var userName = document.getElementById('username');
+  var passWord = document.getElementById('password');
+  var oBox = document.getElementById('box');
+  console.log(userName)
+  console.log(passWord)
+
+  btn.onclick = function() {
+  	oBox.style.display = 'block';
+  	var username = userName.value
+  	var password = passWord.value
+  	//通过 xhr发送 post请求
+  	var xhr = new XMLHttpRequest()
+  	xhr.open('POST', 'login.php')
+  	//设置请求头
+  	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+  	// `` 反引号 解析变量
+  	xhr.send(`username=${username}&password=${password}`)
+  	//根据服务端的反馈  做出界面提示
+  	xhr.onreadystatechange = function() {
+  		if(this.readyState !==4) return
+  			console.log(this.responseText)
+  		  oBox.style.display = 'none'
+
+  	}
+
+
+
+  }
+
+	
+
+</script>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>同步模式</title>
+</head>
+<body>
+	
+</body>
+<script>
+  var xhr = new XMLHttpRequest()
+  xhr.open('GET', 'time.php', true)
+  xhr.send()
+
+  xhr.onreadystatechange = function() {
+  	console.log(this.readyState)
+  }
+	
+
+
+</script>
+</html>

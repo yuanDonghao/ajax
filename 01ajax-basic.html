@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>发送请求</title>
+</head>
+<body>
+<script>
+//AJAX 操作的页面 ‘不能’使用文件协议访问
+
+//AJAX 是一套 API 核心提供的类型：XMLHttpRequest
+//xhr  类似与浏览器的作用
+// 1 用户代理
+var xhr = new XMLHttpRequest()
+// 2 输入网址
+xhr.open('GET','./time.php')
+// 3 开始请求
+xhr.send()
+	
+
+
+</script>
+	
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>接收响应</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var xhr = new XMLHttpRequest()
+
+	//状态改变响应触发
+	xhr.open('GET', './time.php')
+	xhr.send()
+
+	//AJAX API 采用事件的机制
+	xhr.onreadystatechange = function() {
+		//只要xhr状态改变就触发
+		if (this.readyState !== 4) return
+		console.log(this.responseText)
+
+
+	}
+
+
+</script>
+</html>

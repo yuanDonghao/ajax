@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<ul id="list">
+	
+</ul>
+	
+</body>
+<script>
+ var listElement = document.getElementById('list')
+
+
+//发送请求获取列表数据呈现在页面
+ var xhr = new XMLHttpRequest()
+
+ xhr.open('GET', './users.php')
+
+ xhr.send()
+
+ xhr.onreadystatechange = function() {
+ 	if (this.readyState !== 4) return
+ 		//将json中的字符串数据转换成[{},{}...]格式
+ 	var data = JSON.parse(this.responseText)
+	for (var i = 0; i < data.length; i++) {
+	    var liElement = document.createElement('li')
+	    liElement.innerHTML = data[i].name
+	    liElement.id = data[i].id
+
+	    listElement.appendChild(liElement)
+
+	    liElement.addEventListener('click', function() {
+	    	//通过AJAX操作获取服务端对应数据的信息
+
+	    	var xhr1 = new XMLHttpRequest()
+	    	xhr1.open('GET', 'users.php?id=' + this.id)
+	    	xhr1.send()
+	    	xhr1.onreadystatechange = function() {
+	    		if(this.readyState !==4) return
+	    		var obj = JSON.parse(this.responseText)
+	    	    alert(obj.age)
+	    	}
+
+
+
+	    })
+
+ 		}
+ 	
+ 	
+ 
+ }
+
+	
+
+
+
+</script>
+</html>

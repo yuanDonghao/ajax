@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>async</title>
+</head>
+<body>
+	
+</body>
+<script>
+  var xhrAsync = new XMLHttpRequest()
+
+  xhrAsync.open('GET', 'time.php', true)
+  console.log('async')
+  xhrAsync.send()
+  console.log(xhrAsync.responseText)
+
+  console.timeEnd('async')
+
+  var xhrSync = new XMLHttpRequest()
+
+  xhrSync.open('GET', 'time.php', false)
+  console.log('sync')
+  xhrSync.send()
+  console.log(xhrSync.responseText)
+
+  console.timeEnd('sync')
+	
+
+
+</script>
+</html>
